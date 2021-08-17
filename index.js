@@ -29,4 +29,4 @@ app.get("/top-headlines", async function(req, res) {
    
 })
 
-app.listen(9999, ()=> console.log("Listening on port", 9999))
+app.listen(process.env.PORT || 5000)
