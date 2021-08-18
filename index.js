@@ -29,4 +29,22 @@ app.get("/top-headlines", async function(req, res) {
    
 })
 
+app.get("/everything", async function(req, res) { 
+    try {
+        const params = req.query
+
+        const response = await axios.get("https://newsapi.org/v2/everything",{
+            params: {
+                ...params
+            }
+        })
+
+        return res.status(200).send(response.data)
+    } catch(err) {
+        console.log(err)
+        return res.status(500).send(err.response.data)
+    }
+   
+})
+
 app.listen(process.env.PORT || 5000)
